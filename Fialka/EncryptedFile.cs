@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Fialka {
-
-    class EncryptedFile {
+﻿namespace Fialka {
+    internal class EncryptedFile {
 
         public PasswordInfo PasswordOptions { get; set; }
 

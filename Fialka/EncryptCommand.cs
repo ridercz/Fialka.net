@@ -1,14 +1,9 @@
-﻿using McMaster.Extensions.CommandLineUtils;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using McMaster.Extensions.CommandLineUtils;
 
 namespace Fialka {
     [Command(Description = "Encrypt a file using AES-GCM")]
