@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Fialka {
-    [Command(Description = "Encrypt a file using AES")]
+    [Command(Description = "Encrypt a file using AES-GCM")]
     public class EncryptCommand {
         private byte[] key;
         private EncryptedFile outputFile;
@@ -22,18 +22,21 @@ namespace Fialka {
         [Argument(0, "infile", "Input file name")]
         public string InputFileName { get; set; }
 
-        [Option("-o <outfile>", "Output file name, defaults to <infile>.fjd", CommandOptionType.SingleValue)]
+        [Option("-o <outfile>", "Output file name (default to <infile>.fjd)", CommandOptionType.SingleValue)]
         [LegalFilePath]
         public string OutputFileName { get; set; }
+
+        [Option("-a <string>", "Additional authenticated data", CommandOptionType.SingleValue)]
+        public string AuthenticatedData { get; set; }
 
         [Option("-p <password>", "Encryption password", CommandOptionType.SingleValue)]
         public string Password { get; set; }
 
-        [Option("-pi <number>", "Number of PBKDF2 password iterations (default 10000)", CommandOptionType.SingleValue)]
+        [Option("-i <number>", "Number of PBKDF2 password iterations (default 10000)", CommandOptionType.SingleValue)]
         [Range(1000, int.MaxValue)]
         public int PasswordIterations { get; set; } = 10000;
 
-        [Option("-ps <bits>", "Length of PBKDF password salt (default 256)", CommandOptionType.SingleValue)]
+        [Option("-s <bits>", "Length of PBKDF2 password salt (default 256)", CommandOptionType.SingleValue)]
         [Range(128, 1024), DivisibleBy(8)]
         public int PasswordSaltLenght { get; set; } = 256;
 
@@ -41,15 +44,12 @@ namespace Fialka {
         [LegalFilePath]
         public string KeyFile { get; set; }
 
-        [Option("-l <bits>", "Length of generated or derived key (128 or 256,default 256)", CommandOptionType.SingleValue)]
+        [Option("-l <bits>", "Length of generated or derived key (128 or 256, default 256)", CommandOptionType.SingleValue)]
         [Range(128, 256), DivisibleBy(128)]
         public int KeyLength { get; set; } = 256;
 
         [Option("-f", "Force overwrite key file", CommandOptionType.NoValue)]
         public bool KeyFileOverwrite { get; set; }
-
-        [Option("-ad <string>", "Additional authenticated data", CommandOptionType.SingleValue)]
-        public string AuthenticatedData { get; set; }
 
         // Command action
 
