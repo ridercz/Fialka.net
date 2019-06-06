@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace Fialka {
-    [Command(Description = "Encrypt a file using AES-GCM")]
+    [Command(Description = "Encrypts a file using AES-GCM.")]
     public class EncryptCommand {
         private byte[] key;
         private EncryptedFile outputFile;
