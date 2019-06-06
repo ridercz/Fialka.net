@@ -4,6 +4,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace Fialka {
     [Command(Description = "Console application showcasing symmetric crypto in .NET Core 3.0")]
     [Subcommand(typeof(EncryptCommand))]
+    [Subcommand(typeof(DecryptCommand))]
     internal class Program {
         private static void Main(string[] args) {
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
