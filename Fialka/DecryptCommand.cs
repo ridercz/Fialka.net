@@ -21,14 +21,14 @@ namespace Fialka {
         [Argument(0, "infile", "Input file name")]
         public string InputFileName { get; set; }
 
-        [Option("-o <outfile>", "Output file name (default to <infile> without extension)", CommandOptionType.SingleValue)]
+        [Option("-o <outfile>", "Output file name (default <infile> without extension)", CommandOptionType.SingleValue)]
         [LegalFilePath]
         public string OutputFileName { get; set; }
 
         [Option("-p <password>", "Decryption password", CommandOptionType.SingleValue)]
         public string Password { get; set; }
 
-        [Option("-k <keyfile>", "Encryption key file name", CommandOptionType.SingleValue)]
+        [Option("-k <keyfile>", "Decryption key file name", CommandOptionType.SingleValue)]
         [FileExists]
         public string KeyFile { get; set; }
 

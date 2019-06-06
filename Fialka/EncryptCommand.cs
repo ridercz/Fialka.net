@@ -17,7 +17,7 @@ namespace Fialka {
         [Argument(0, "infile", "Input file name")]
         public string InputFileName { get; set; }
 
-        [Option("-o <outfile>", "Output file name (default to <infile>.fjd)", CommandOptionType.SingleValue)]
+        [Option("-o <outfile>", "Output file name (default <infile>.fjd)", CommandOptionType.SingleValue)]
         [LegalFilePath]
         public string OutputFileName { get; set; }
 
